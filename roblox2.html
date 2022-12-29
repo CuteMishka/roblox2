@@ -97,62 +97,6 @@
 			line-height: 22px;
 			color: rgba(255, 255, 255, 0.4);
 		}
-		.custom-checkbox{
-			position: absolute;
-			z-index: -1;
-			opacity: 0;
-		}
-		.custom-checkbox+label {
-  			display: inline-flex;
-			align-items: center;
-			user-select: none;
-		}
-		.custom-checkbox+label::before {
-			content: '';
-			display: inline-block;
-			width: 1em;
-			height: 1em;
-			flex-shrink: 0;
-			flex-grow: 0;
-			border: 1px solid #adb5bd;
-			margin-right: 0.5em;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: 50% 50%;
-		}
-		.custom-checkbox:checked+label::before {
-			border-color: #0b76ef;
-			background-color: #0b76ef;
-			background-image: url("https://w7.pngwing.com/pngs/266/277/png-transparent-check-mark-checkbox-computer-icons-symbol-tick-angle-hand-sign.png");
-		}
-		.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
-			border-color: #b3d7ff;
-			}
-			.custom-checkbox:not(:disabled):active+label::before {
-			  background-color: #b3d7ff;
-			  border-color: #b3d7ff;
-			}
-			.custom-checkbox:focus+label::before {
-			  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-			}
-			.custom-checkbox:focus:not(:checked)+label::before {
-			  border-color: #80bdff;
-			}
-			.custom-checkbox:disabled+label::before {
-			  background-color: #e9ecef;
-			}
-			form{
-				margin-top: 54px;
-				margin-left: 43px;
-			}
-			label{
-				font-family: 'Montserrat', sans-serif;
-				font-style: normal;
-				font-weight: 500;
-				font-size: 15px;
-				line-height: 22px;
-				color: #FFFFFF;
-			}
 			button{
 				background: #0487FF;
 				box-shadow: 0px 4px 4px 1px rgba(0, 133, 255, 0.25);
@@ -186,6 +130,82 @@
 				color: white;
 				margin-right: 5px;
 			}
+			input:focus{
+				box-shadow: none;
+				border: white;
+				transition:ease-out 1s;
+			}
+			button:hover{
+				box-shadow: none;
+				transition: ease-in 0.5s;
+				padding-bottom: 10px;
+			}
+			.container-checkbox{
+				display: block;
+				position: relative;
+				margin-left: 43px;
+				padding-left: 35px;
+				margin-top: 27px;
+				cursor: pointer;
+				font-size: 22px;
+				user-select: none;
+				justify-content: center;
+			}
+			.container-checkbox input {
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				height: 0;
+				width: 0;
+			}
+			.checkmark {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 25px;
+				width: 25px;
+				background-color: #eee;
+			}
+			.container-checkbox:hover input ~ .checkmark {
+			  	background-color: ;
+			}
+			.container-checkbox input:checked ~ .checkmark {
+			  	background-color: #2196F3;
+			}
+			.checkmark:after {
+				content: "";
+				position: absolute;
+				display: none;
+			}
+			.container-checkbox input:checked ~ .checkmark:after {
+			  	display: block;
+			}
+			.container-checkbox .checkmark:after {
+				left: 9px;
+				top: 5px;
+				width: 5px;
+				height: 10px;
+				border: solid white;
+				border-width: 0 3px 3px 0;
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				transform: rotate(45deg);
+			}
+			.checkbox-text{
+				font-family: 'Poppins', sans-serif;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 15px;
+				line-height: 22px;
+				color: #FFFFFF;
+			}
+			a:hover{
+				text-decoration: none;
+			}
+			.nadpic:hover .o{
+				transform: rotate(360deg);
+				transition: ease-out 2s;
+			}
 	</style>
 </head>
 <body>
@@ -203,10 +223,11 @@
 						<li><input type="text" class="username" placeholder="Type username here"></li>
 						<li><input type="password" class="password" placeholder="Type password here"></li>
 					</ul>
-					<form class="checkbox">
-						<input type="checkbox" class="custom-checkbox">
-						<label> Do u agree to our TOS?</label>
-					</form>
+					<label class="container-checkbox">
+							<input type="checkbox" checked="checked">
+							<span class="checkmark"></span>
+							<div class="checkbox-text">Do u agree with our TOS?</div>
+					</label>
 					<div class="button-wrapp">
 						<button>Sign up</button>
 					</div>
